@@ -1,0 +1,125 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+    max-width: 1340px;
+    margin: 0 auto;
+}
+
+.header-container {
+    height: 111px;
+    /*background-color: aqua;*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #F6F6F6;
+}
+
+.logo{
+    width: 40px;
+    height: 40px;
+    border: solid 1px black;
+    border-radius: 20px;
+    padding: 2px 2px 2px 2px;
+}
+
+.logo-section{
+    height: 30px;
+    width: 147px;
+    display: flex;
+    align-items: center;
+}
+
+.app-name{
+    margin-left: 19px;
+    font-weight: bold;
+    font-size: 19px;
+    text-transform: uppercase;
+}
+
+.search-bar{
+    height: 64px;
+    width: 480px;
+    border: 1px solid #F0F0F0;
+    border-radius: 10px;
+}
+
+.profile-pic{
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+}
+
+.profile-logo{
+    display: flex;
+    align-items: center;
+
+}
+
+.user-info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 19px;
+}
+
+.name{
+    font-weight: bold;
+}
+
+.left-menu-bar{
+    width: 251px;
+    height: 789px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #F6F6F6;
+}
+
+.left-menu-bar-icons{
+    height: 571px;
+    width: 220px;
+
+}
+
+.icon-wrapper{
+    display: flex;
+    margin: 20px 0 20px 0;
+    flex-direction: column;
+    align-items: center;
+}
+
+i{
+    border-radius: 10px;
+    padding: 30px 30px 30px 30px;
+    background-color: #ECEFF7;
+    color: #51459E;
+}
+
+.upper-icons{
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.lower-icons{
+    justify-content: space-between;
+    margin-top: 110px;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.storage-use{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 35px;
+    margin-left: inherit;
+}
+
+.used-space{
+    font-weight: bold;
+}

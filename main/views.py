@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import DocumentForm
 from .models import Document
 
@@ -26,6 +26,28 @@ def main_pg(request):
 #     })
 
 def model_form_upload(request):
-    if request.method == "POST":
-        print(request.post)
-    return render(request, 'main/layout.html')
+    if request.method == 'POST':
+        print(request.POST)
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            print("valid")
+            password = request.POST.get("text")
+            print(password)
+            data = form.cleaned_data
+            field = str(data['document'])
+            extension = field.split(".")[1]
+            if extension == "jpg":
+                obj.description = "photo"
+            else:
+                obj.description = "doc"
+            # obj.field1 = request.user
+            obj.save()
+            # form.save()
+        else:
+            print("not valid")
+            print(form.errors)
+            form = DocumentForm()
+
+        return redirect('/')
+        # return render(request, 'main/layout.html', {'form':form})

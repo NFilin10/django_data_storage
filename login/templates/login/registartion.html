@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registr</title>
+</head>
+<body>
+     {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+     {% endif %}
+     <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+
+        <div class="container">
+            <input type="text" name="username" value="vfdvd" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+            <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+            <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
+            <button type="submit">Login</button>
+        </div>
+
+    </form>
+</body>
+</html>

@@ -26,6 +26,7 @@ def main_pg(request):
 #     })
 
 def model_form_upload(request):
+
     if request.method == 'POST':
         print(request.POST)
         form = DocumentForm(request.POST, request.FILES)
@@ -43,11 +44,9 @@ def model_form_upload(request):
                 obj.description = "doc"
             # obj.field1 = request.user
             obj.save()
-            # form.save()
-        else:
-            print("not valid")
-            print(form.errors)
-            form = DocumentForm()
+            return redirect('/')
+    else:
+        form = DocumentForm()
 
-        return redirect('/')
-        # return render(request, 'main/layout.html', {'form':form})
+        # return redirect('/')
+        return render(request, 'main/layout.html')

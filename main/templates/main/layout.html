@@ -19,11 +19,16 @@
                 <input class="search-bar" type="text" placeholder="Search files...">
             </div>
             <div class="profile-logo">
-                <img class="profile-pic" src="https://images.unsplash.com/photo-1628563694622-5a76957fd09c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&w=1000&q=80" alt="">
-                <div class="user-info">
-                    <span class="name">Nikita Filin</span>
-                    <span class="email">nikita@gmail</span>
-                </div>
+                {% if user.is_authenticated %}
+                    <img class="profile-pic" src="https://images.unsplash.com/photo-1628563694622-5a76957fd09c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&w=1000&q=80" alt="">
+                    <div class="user-info">
+                        <span class="name">Nikita Filin</span>
+                        <span class="email">nikita@gmail</span>
+                    </div>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'register' %}">Register</a>
+                {% endif %}
             </div>
         </div>
     </header>
@@ -144,7 +149,7 @@
             <form action="{% url 'file' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="file" name="document" required="" id="id_document">
-
+                {{ form }}
 
                 <button type="submit">Upload</button>
             </form>

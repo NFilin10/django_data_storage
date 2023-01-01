@@ -1,7 +1,10 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'login/css/login.css' %}">
     <title>Login</title>
 </head>
 <body>
@@ -10,17 +13,24 @@
             {{ message }}
         {% endfor %}
      {% endif %}
-    <form action="" method="post">
-        {% csrf_token %}
 
-        <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
-            <button type="submit">Login</button>
+     <section class='login' id='login'>
+        <div class='head'>
+            <h1 class='company'>Storage space</h1>
         </div>
+        <p class='msg'>Welcome</p>
+        <div class='form'>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="Enter Username" name="username" class='text' id='username' required><br>
+                <input type="password" placeholder="Enter Password" name="password" class='password' required><br>
+                <button class='btn-login' id='do-login' type="submit">Login</button>
+                <a href="{% url 'register' %}" class='signup'>Signup</a>
+                <a href="#" class='forgot'>Forgot?</a>
+            </form>
+        </div>
+    </section>
 
-    </form>
+
 </body>
 </html>

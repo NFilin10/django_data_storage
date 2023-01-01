@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from .forms import DocumentForm
 from .models import Document
+from django.contrib.auth.decorators import login_required
 
+@login_required()
 def main_pg(request):
     return render(request, 'main/layout.html')
 

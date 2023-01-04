@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class Document(models.Model):
     # user_choice =  [
@@ -6,3 +8,4 @@ class Document(models.Model):
     # ('f', 'File')]
     description = models.CharField(max_length=255, blank=True)
     document = models.FileField(upload_to='documents/')
+    user_id = models.IntegerField("User id", blank=False, default=2)

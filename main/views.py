@@ -3,6 +3,7 @@ from .forms import DocumentForm
 from .models import Document
 from django.contrib.auth.decorators import login_required
 
+
 @login_required()
 def main_pg(request):
     return render(request, 'main/layout.html')
@@ -44,8 +45,11 @@ def model_form_upload(request):
                 obj.description = "photo"
             else:
                 obj.description = "doc"
-            # obj.field1 = request.user
+            obj.user_id = request.user.id
+
             obj.save()
+            x = Document.objects.filter(user_id=request.user.id)
+            print(x)
             return redirect('/')
     else:
         form = DocumentForm()

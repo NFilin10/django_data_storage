@@ -45,10 +45,10 @@ def model_form_upload(request):
                 obj.description = "photo"
             else:
                 obj.description = "doc"
-            obj.user_id = request.user.id
+            obj.user = request.user
 
             obj.save()
-            x = Document.objects.filter(user_id=request.user.id)
+            x = Document.objects.filter(user=request.user)
             print(x)
             return redirect('/')
     else:

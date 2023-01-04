@@ -8,4 +8,6 @@ class Document(models.Model):
     # ('f', 'File')]
     description = models.CharField(max_length=255, blank=True)
     document = models.FileField(upload_to='documents/')
-    user_id = models.IntegerField("User id", blank=False, default=2)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
+    #user_id = models.IntegerField("User id", blank=False, default=2)

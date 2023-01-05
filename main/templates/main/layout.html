@@ -4,155 +4,164 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'main/css/layout.css' %}">
     <script src="https://kit.fontawesome.com/ee07bab358.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo-section">
-                <img class="logo" src="https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png" alt="">
-                <h3 class="app-name">server</h3>
-            </div>
-            <div class="search-bar">
-                <input class="search-bar" type="text" placeholder="Search files...">
-            </div>
-            <div class="profile-logo">
-                {% if user.is_authenticated %}
-                    <img class="profile-pic" src="https://images.unsplash.com/photo-1628563694622-5a76957fd09c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&w=1000&q=80" alt="">
-                    <div class="user-info">
-                        <span class="name">Nikita Filin</span>
-                        <span class="email">nikita@gmail</span>
-                    </div>
-                {% else %}
-                    <a href="{% url 'login' %}">Login</a>
-                    <a href="{% url 'register' %}">Register</a>
-                {% endif %}
-            </div>
-        </div>
-    </header>
-
-    <div class="main-container">
-        <div class="left-menu-bar">
-            <div class="left-menu-bar-icons">
-                <div class="upper-icons">
-                    <div class="icon-wrapper"><i class="fa-solid fa-house fa-lg"></i><span class="icon-heading">Dashboard</span></div>
-                    <div class="icon-wrapper"><i class="fa-solid fa-border-none fa-lg"></i><span class="icon-heading">All files</span></div>
-                    <div class="icon-wrapper"><i class="fa-solid fa-file fa-lg"></i><span class="icon-heading">Recent</span></div>
-                    <div class="icon-wrapper"><i class="fa-solid fa-heart fa-lg"></i><span class="icon-heading">Favorites</span></div>
+    <div class="content">
+        <header>
+            <div class="header-container">
+                <div class="logo-section">
+                    <img class="logo" src="https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png" alt="">
+                    <h3 class="app-name">server</h3>
                 </div>
-               <div class="lower-icons">
-                    <div class="icon-wrapper"><i class="fa-solid fa-image fa-lg"></i><span class="icon-heading">Pictures</span></div>
-                    <div class="icon-wrapper"><i class="fa-solid fa-folder fa-lg"></i><span class="icon-heading">Files</span></div>
-                    <div class="icon-wrapper"><i class="fa-solid fa-link fa-lg"></i><span class="icon-heading">Links</span></div>
-                    <div class="icon-wrapper"><i class="fa-solid fa-note-sticky fa-lg"></i><span class="icon-heading">Notes</span></div>
-               </div>
-            </div>
-        </div>
-        <div class="main-section">
-            <div class="files-icons">
-                <div class="icon-wrapper-main"><i class="fa-solid fa-image fa-lg"><span class="upper">200 files</span></i></div>
-                <div class="icon-wrapper-main"><i class="fa-solid fa-folder fa-lg"><span class="upper">200 files</span></i></div>
-                <div class="icon-wrapper-main"><i class="fa-solid fa-link fa-lg"><span class="upper">200 files</span></i></div>
-                <div class="icon-wrapper-main"><i class="fa-solid fa-note-sticky fa-lg"><span class="upper">200 files</span></i></div>
-            </div>
-            <div class="folders">
-                <h3>Folders</h3>
-                <div class="folders-block">
-                    <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
-                        <div class="folder-info">
-                            <h3 class="folder-name">Theme</h3>
-                            <span class="file-amount">File amount</span>
+                <div class="search-bar">
+                    <input class="search-bar" type="text" placeholder="Search files...">
+                </div>
+                <div class="profile-logo">
+                    {% if user.is_authenticated %}
+                        <img class="profile-pic" src="https://images.unsplash.com/photo-1628563694622-5a76957fd09c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&w=1000&q=80" alt="">
+                        <div class="user-info">
+                            <span class="name">Nikita Filin</span>
+                            <span class="email">nikita@gmail</span>
                         </div>
-                    </div>
-                    <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
-                        <div class="folder-info">
-                            <h3 class="folder-name">Theme</h3>
-                            <span class="file-amount">File amount</span>
-                        </div>
-                    </div>
-                    <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
-                        <div class="folder-info">
-                            <h3 class="folder-name">Theme</h3>
-                            <span class="file-amount">File amount</span>
-                        </div>
-                    </div>
-                    <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
-                        <div class="folder-info">
-                            <h3 class="folder-name">Theme</h3>
-                            <span class="file-amount">File amount</span>
-                        </div>
-                    </div>
-                    <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
-                        <div class="folder-info">
-                            <h3 class="folder-name">Theme</h3>
-                            <span class="file-amount">File amount</span>
-                        </div>
-                    </div>
-                    <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
-                        <div class="folder-info">
-                            <h3 class="folder-name">Theme</h3>
-                            <span class="file-amount">File amount</span>
-                        </div>
-                    </div>
-                    <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
-                        <div class="folder-info">
-                            <h3 class="folder-name">Theme</h3>
-                            <span class="file-amount">File amount</span>
-                        </div>
-                    </div>
+                    {% else %}
+                        <a href="{% url 'login' %}">Login</a>
+                        <a href="{% url 'register' %}">Register</a>
+                    {% endif %}
                 </div>
             </div>
-            <div class="files-section">
-                <h3>Files</h3>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>File</th>
-                                <th>Size</th>
-                                <th>Added</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>file1</td>
-                                <td>23 GB</td>
-                                <td>12.12.2022</td>
-                            <tr>
-                                <td>file2</td>
-                                <td>23 GB</td>
-                                <td>12.12.2022</td>
-                            </tr>
-                            <tr>
-                                <td>file3</td>
-                                <td>23 GB</td>
-                                <td>12.12.2022</td>
-                            </tr>
-                            <tr>
-                                <td>file4</td>
-                                <td>23 GB</td>
-                                <td>12.12.2022</td>
-                            </tr>
-                            <tr>
-                                <td>file5</td>
-                                <td>23 GB</td>
-                                <td>12.12.2022</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        </header>
+
+        <div class="main-container">
+            <div class="left-menu-bar">
+                <div class="left-menu-bar-icons">
+                    <div class="upper-icons">
+                        <div class="icon-wrapper"><i class="fa-solid fa-house fa-lg"></i><span class="icon-heading">Dashboard</span></div>
+                        <div class="icon-wrapper"><i class="fa-solid fa-border-none fa-lg"></i><span class="icon-heading">All files</span></div>
+                        <div class="icon-wrapper"><i class="fa-solid fa-file fa-lg"></i><span class="icon-heading">Recent</span></div>
+                        <div class="icon-wrapper"><i class="fa-solid fa-heart fa-lg"></i><span class="icon-heading">Favorites</span></div>
+                    </div>
+                   <div class="lower-icons">
+                        <div class="icon-wrapper"><i class="fa-solid fa-image fa-lg"></i><span class="icon-heading">Pictures</span></div>
+                        <div class="icon-wrapper"><i class="fa-solid fa-folder fa-lg"></i><span class="icon-heading">Files</span></div>
+                        <div class="icon-wrapper"><i class="fa-solid fa-link fa-lg"></i><span class="icon-heading">Links</span></div>
+                        <div class="icon-wrapper"><i class="fa-solid fa-note-sticky fa-lg"></i><span class="icon-heading">Notes</span></div>
+                   </div>
                 </div>
             </div>
-        </div>
-        <div class="storage-section">
-            <form action="" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <input type="file" name="document" required="" id="id_document">
+            <div class="main-section">
+                <div class="files-icons">
+                    <div class="icon-wrapper-main"><i class="fa-solid fa-image fa-lg"><span class="upper">200 files</span></i></div>
+                    <div class="icon-wrapper-main"><i class="fa-solid fa-folder fa-lg"><span class="upper">200 files</span></i></div>
+                    <div class="icon-wrapper-main"><i class="fa-solid fa-link fa-lg"><span class="upper">200 files</span></i></div>
+                    <div class="icon-wrapper-main"><i class="fa-solid fa-note-sticky fa-lg"><span class="upper">200 files</span></i></div>
+                </div>
+                <div class="folders">
+                    <h3>Folders</h3>
+                    <div class="folders-block">
+                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                            <div class="folder-info">
+                                <h3 class="folder-name">Theme</h3>
+                                <span class="file-amount">File amount</span>
+                            </div>
+                        </div>
+                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                            <div class="folder-info">
+                                <h3 class="folder-name">Theme</h3>
+                                <span class="file-amount">File amount</span>
+                            </div>
+                        </div>
+                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                            <div class="folder-info">
+                                <h3 class="folder-name">Theme</h3>
+                                <span class="file-amount">File amount</span>
+                            </div>
+                        </div>
+                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                            <div class="folder-info">
+                                <h3 class="folder-name">Theme</h3>
+                                <span class="file-amount">File amount</span>
+                            </div>
+                        </div>
+                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                            <div class="folder-info">
+                                <h3 class="folder-name">Theme</h3>
+                                <span class="file-amount">File amount</span>
+                            </div>
+                        </div>
+                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                            <div class="folder-info">
+                                <h3 class="folder-name">Theme</h3>
+                                <span class="file-amount">File amount</span>
+                            </div>
+                        </div>
+                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                            <div class="folder-info">
+                                <h3 class="folder-name">Theme</h3>
+                                <span class="file-amount">File amount</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="files-section">
+                    <h3>Files</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>File</th>
+                                    <th>Size</th>
+                                    <th>Added</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>file1</td>
+                                    <td>23 GB</td>
+                                    <td>12.12.2022</td>
+                                <tr>
+                                    <td>file2</td>
+                                    <td>23 GB</td>
+                                    <td>12.12.2022</td>
+                                </tr>
+                                <tr>
+                                    <td>file3</td>
+                                    <td>23 GB</td>
+                                    <td>12.12.2022</td>
+                                </tr>
+                                <tr>
+                                    <td>file4</td>
+                                    <td>23 GB</td>
+                                    <td>12.12.2022</td>
+                                </tr>
+                                <tr>
+                                    <td>file5</td>
+                                    <td>23 GB</td>
+                                    <td>12.12.2022</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="storage-section">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <input type="file" name="document" required="" id="id_document">
+                    <select name="file_type" id="id_file_type">
+                      <option value="p">Photo</option>
+                      <option value="f">Document</option>
+                      <option value="l">Link</option>
+                    </select>
 
 
-                <button type="submit">Upload</button>
-            </form>
+                    <button type="submit">Upload</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>

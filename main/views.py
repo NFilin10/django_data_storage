@@ -4,7 +4,7 @@ from .models import Document
 from django.contrib.auth.decorators import login_required
 
 
-@login_required()
+# @login_required()
 def main_pg(request):
     return render(request, 'main/layout.html')
 
@@ -27,7 +27,7 @@ def main_pg(request):
 #     return render(request, 'main/layout.html', {
 #         'form': form
 #     })
-
+@login_required()
 def model_form_upload(request):
 
     if request.method == 'POST':
@@ -38,21 +38,15 @@ def model_form_upload(request):
             print("valid")
             password = request.POST.get("text")
             print(password)
-            data = form.cleaned_data
-            field = str(data['document'])
-            extension = field.split(".")[1]
-            if extension == "jpg":
-                obj.description = "photo"
-            else:
-                obj.description = "doc"
             obj.user = request.user
-
             obj.save()
             x = Document.objects.filter(user=request.user)
             print(x)
             return redirect('/')
+        else:
+            print(form.errors)
+            # return redirect('/')
     else:
         form = DocumentForm()
 
-        # return redirect('/')
         return render(request, 'main/layout.html')

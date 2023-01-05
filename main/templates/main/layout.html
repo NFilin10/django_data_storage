@@ -26,6 +26,12 @@
                         <div class="user-info">
                             <span class="name">Nikita Filin</span>
                             <span class="email">nikita@gmail</span>
+
+                        </div>
+                        <div class="sidebar_toggler">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
                     {% else %}
                         <a href="{% url 'login' %}">Login</a>
@@ -36,74 +42,85 @@
         </header>
 
         <div class="main-container">
-            <div class="left-menu-bar">
-                <div class="left-menu-bar-icons">
-                    <div class="upper-icons">
-                        <div class="icon-wrapper"><i class="fa-solid fa-house fa-lg"></i><span class="icon-heading">Dashboard</span></div>
-                        <div class="icon-wrapper"><i class="fa-solid fa-border-none fa-lg"></i><span class="icon-heading">All files</span></div>
-                        <div class="icon-wrapper"><i class="fa-solid fa-file fa-lg"></i><span class="icon-heading">Recent</span></div>
-                        <div class="icon-wrapper"><i class="fa-solid fa-heart fa-lg"></i><span class="icon-heading">Favorites</span></div>
-                    </div>
-                   <div class="lower-icons">
-                        <div class="icon-wrapper"><i class="fa-solid fa-image fa-lg"></i><span class="icon-heading">Pictures</span></div>
-                        <div class="icon-wrapper"><i class="fa-solid fa-folder fa-lg"></i><span class="icon-heading">Files</span></div>
-                        <div class="icon-wrapper"><i class="fa-solid fa-link fa-lg"></i><span class="icon-heading">Links</span></div>
-                        <div class="icon-wrapper"><i class="fa-solid fa-note-sticky fa-lg"></i><span class="icon-heading">Notes</span></div>
-                   </div>
+            <aside id="sidebar"> {#class="left-menu-bar"#}
+                <div class="sidebar_content sidebar_body" {#class="left-menu-bar-icons"#}>
+                    <nav class="side_navlinks">
+                        <div class="upper-icons">
+                            <div class="icon-wrapper"><i class="fa-solid fa-house fa-lg"></i><span class="icon-heading">Dashboard</span></div>
+                            <div class="icon-wrapper"><i class="fa-solid fa-border-none fa-lg"></i><span class="icon-heading">All files</span></div>
+                            <div class="icon-wrapper"><i class="fa-solid fa-file fa-lg"></i><span class="icon-heading">Recent</span></div>
+                            <div class="icon-wrapper"><i class="fa-solid fa-heart fa-lg"></i><span class="icon-heading">Favorites</span></div>
+                        </div>
+                       <div class="lower-icons">
+                            <div class="icon-wrapper"><i class="fa-solid fa-image fa-lg"></i><span class="icon-heading">Pictures</span></div>
+                            <div class="icon-wrapper"><i class="fa-solid fa-folder fa-lg"></i><span class="icon-heading">Files</span></div>
+                            <div class="icon-wrapper"><i class="fa-solid fa-link fa-lg"></i><span class="icon-heading">Links</span></div>
+                            <div class="icon-wrapper"><i class="fa-solid fa-note-sticky fa-lg"></i><span class="icon-heading">Notes</span></div>
+                       </div>
+                    </nav>
                 </div>
-            </div>
+            </aside>
+
             <div class="main-section">
-                <div class="files-icons">
-                    <div class="icon-wrapper-main"><i class="fa-solid fa-image fa-lg"><span class="upper">200 files</span></i></div>
-                    <div class="icon-wrapper-main"><i class="fa-solid fa-folder fa-lg"><span class="upper">200 files</span></i></div>
-                    <div class="icon-wrapper-main"><i class="fa-solid fa-link fa-lg"><span class="upper">200 files</span></i></div>
-                    <div class="icon-wrapper-main"><i class="fa-solid fa-note-sticky fa-lg"><span class="upper">200 files</span></i></div>
-                </div>
+{#                <div class="files-icons">#}
+{#                    <div class="icon-wrapper-main"><i class="fa-solid fa-image fa-lg"><span class="upper">200 files</span></i></div>#}
+{#                    <div class="icon-wrapper-main"><i class="fa-solid fa-folder fa-lg"><span class="upper">200 files</span></i></div>#}
+{#                    <div class="icon-wrapper-main"><i class="fa-solid fa-link fa-lg"><span class="upper">200 files</span></i></div>#}
+{#                    <div class="icon-wrapper-main"><i class="fa-solid fa-note-sticky fa-lg"><span class="upper">200 files</span></i></div>#}
+{#                </div>#}
                 <div class="folders">
                     <h3>Folders</h3>
                     <div class="folders-block">
-                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                        <div class="folder-wrapper">
                             <div class="folder-info">
+                                <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
                                 <h3 class="folder-name">Theme</h3>
                                 <span class="file-amount">File amount</span>
                             </div>
                         </div>
-                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                        <div class="folder-wrapper">
                             <div class="folder-info">
+                                <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
                                 <h3 class="folder-name">Theme</h3>
                                 <span class="file-amount">File amount</span>
                             </div>
                         </div>
-                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                        <div class="folder-wrapper">
                             <div class="folder-info">
+                                <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
                                 <h3 class="folder-name">Theme</h3>
                                 <span class="file-amount">File amount</span>
                             </div>
                         </div>
-                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                        <div class="folder-wrapper">
                             <div class="folder-info">
+                                <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
                                 <h3 class="folder-name">Theme</h3>
                                 <span class="file-amount">File amount</span>
                             </div>
                         </div>
-                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                        <div class="folder-wrapper">
                             <div class="folder-info">
+                                <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
                                 <h3 class="folder-name">Theme</h3>
                                 <span class="file-amount">File amount</span>
                             </div>
                         </div>
-                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                        <div class="folder-wrapper">
                             <div class="folder-info">
+                                <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
                                 <h3 class="folder-name">Theme</h3>
                                 <span class="file-amount">File amount</span>
                             </div>
                         </div>
-                        <div class="folder-wrapper"><i class="fa-solid fa-folder-closed fa-2x"></i>
+                        <div class="folder-wrapper">
                             <div class="folder-info">
+                                <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
                                 <h3 class="folder-name">Theme</h3>
                                 <span class="file-amount">File amount</span>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="files-section">
@@ -164,5 +181,6 @@
             </div>
         </div>
     </div>
+    <script src="{% static 'main/js/sidebar.js' %}"></script>
 </body>
 </html>

@@ -7,7 +7,9 @@
 .content{
     max-width: 1800px;
     margin: 0 auto;
+    /*padding: 3%;*/
 }
+
 
 .main-container{
     display: flex;
@@ -19,6 +21,10 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #F6F6F6;
+}
+
+.sidebar_toggler{
+    display: none;
 }
 
 .logo{
@@ -78,15 +84,15 @@
     font-weight: bold;
 }
 
-.left-menu-bar{
-    width: 12%;
+#sidebar{
+    width: 15%;
     height: 789px;
     display: flex;
     flex-direction: column;
     border-right: 1px solid #F6F6F6;
 }
 
-.left-menu-bar-icons{
+.sidebar_content, .sidebar_body{
     height: 571px;
     max-width: 220px;
 
@@ -125,7 +131,7 @@
     border-right: 1px solid #F6F6F6;
     margin-left: 20px;
     width: 65%;
-    padding-right: 20px;
+    /*padding-right: 20px;*/
 }
 
 .files-icons{
@@ -167,32 +173,26 @@
 .folders-block{
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 80px;
     align-items: center;
+
 }
 
 .folder-wrapper{
-    max-width: 138px;
-    height: 130px;
+    width: 138px;
+    height: 138px;
     background-color: #ECEFF7;
     border-radius: 25px;
-    padding: 7px 75px 75px 10px;
-    display: flex;
-    margin: 20px 32px 20px 0;
-    flex-direction: column;
-    align-items: center;
-
 }
 
 .folder-info{
-    margin-top: 35px;
-    min-width: 90px;
-    margin-left: 50px;
 
-
+    margin-top: 10px;
+    margin-left: 20px;
 }
 
 .folder-name{
+    margin-top: 30px;
     font-size: 14px;
 }
 
@@ -207,7 +207,7 @@
 }
 
 .storage-section{
-    width: 23%;
+    width: 20%;
     background-color: aqua;
 }
 
@@ -259,3 +259,136 @@ tr{
 /*  background-color: rgba(255, 255, 255, 0.2);*/
 /*  z-index: -1;*/
 /*}*/
+
+
+@media (max-width: 767px){
+    .logo-section{
+        display: none;
+    }
+    .folders-block{
+        justify-content: space-between;
+        margin-left: 16px;
+        margin-right: 16px;
+        gap: 30px;
+    }
+    .main-container{
+        flex-direction: column;
+    }
+
+    .folder-wrapper{
+        max-width: 50%;
+        max-height: 50%;
+    }
+
+    .main-section{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .user-info{
+        display: none;
+    }
+    #sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    max-width: 300px;
+    width: 80%;
+    height: 100%;
+    padding: 2rem;
+    background-color: #F6F6F6;
+    box-shadow: 0 10px 20px -4px #000;
+    overflow-x: hidden;
+    overflow-y: auto;
+    pointer-events: none;
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease, visibility 0.2s ease, transform 0.3s ease;
+}
+
+/* when the sidebar has 'show' class */
+    #sidebar.show {
+        pointer-events: all;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+    .sidebar_content {
+        padding: 2.8rem 0;
+        pointer-events: none;
+        /* so that the Sidebar does not get closed while clicking on sidebar_content */
+    }
+
+    .sidebar_content a {
+        pointer-events: all;
+        /* so that all the <a> inside sidebar_content are clickable */
+    }
+
+    .sidebar_body {
+        border-top: 1px dashed var(--text-color);
+        border-bottom: 1px dashed var(--text-color);
+    }
+
+    .side_navlinks ul {
+        display: grid;
+        gap: 2rem;
+    }
+
+    .side_navlinks li a {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.8;
+    }
+
+    .side_navlinks a:hover {
+        opacity: 1;
+    }
+
+    /*---- Sidebar-Toggler ----*/
+    .sidebar_toggler {
+        position: relative;
+        /*top: 4vh;*/
+        /*right: 3vw;*/
+        width: 1.75rem;
+        height: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .sidebar_toggler span {
+        background-color: #ddd;
+        width: 100%;
+        height: 2.4px;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        /* so that it doesn't overlap the sidebar_toggler */
+    }
+
+    /* if the sidebar has 'show' class then their adjacent-sibling (i.e., sidebar_toggler) will... */
+    /*#sidebar.show + .sidebar_toggler {*/
+    /*    justify-content: center;*/
+    /*}*/
+
+    /*#sidebar.show + .sidebar_toggler span {*/
+    /*    margin-top: -1.2px;*/
+    /*    margin-bottom: -1.2px;*/
+    /*}*/
+
+    #sidebar.show + .sidebar_toggler span:first-child {
+        transform: rotate(45deg);
+    }
+
+    #sidebar.show + .sidebar_toggler span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    #sidebar.show + .sidebar_toggler span:last-child {
+        transform: rotate(-45deg);
+    }
+
+}

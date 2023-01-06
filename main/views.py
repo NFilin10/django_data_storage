@@ -31,22 +31,25 @@ def main_pg(request):
 def model_form_upload(request):
 
     if request.method == 'POST':
-        print(request.POST)
-        form = DocumentForm(request.POST, request.FILES)
-        if form.is_valid():
-            obj = form.save(commit=False)
-            print("valid")
-            password = request.POST.get("text")
-            print(password)
-            obj.user = request.user
-            obj.save()
-            x = Document.objects.filter(user=request.user)
-            print(x)
-            return redirect('/')
-        else:
-            print(form.errors)
-            # return redirect('/')
+        user_value = request.POST.get("file_type")
+        print(user_value)
+        return redirect('/')
+        # print(request.POST)
+        # form = DocumentForm(request.POST, request.FILES)
+        # if form.is_valid():
+        #     obj = form.save(commit=False)
+        #     print("valid")
+        #     password = request.POST.get("text")
+        #     print(password)
+        #     obj.user = request.user
+        #     obj.save()
+        #     x = Document.objects.filter(user=request.user)
+        #     print(x)
+        #     return redirect('/')
+        # else:
+        #     print(form.errors)
+        #     # return redirect('/')
     else:
-        form = DocumentForm()
+       # form = DocumentForm()
 
         return render(request, 'main/layout.html')

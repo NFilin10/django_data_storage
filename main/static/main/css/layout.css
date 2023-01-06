@@ -209,6 +209,11 @@
 .storage-section{
     width: 20%;
     background-color: aqua;
+    margin-left: 10px;
+}
+
+.form-floating{
+    max-width: 150px;
 }
 
 .folder-wrapper i{

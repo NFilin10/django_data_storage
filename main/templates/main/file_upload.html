@@ -1,0 +1,36 @@
+{% load static %}
+
+<!-- Drop Zone Container -->
+<div class="wrapper" id="pops">
+    <div class="popup" id="drop-zone-container" {# mypopup #}>
+        <span class="close">&times;</span>
+  <!-- Drop Zone -->
+        <div class="popup-content" id="drop-zone">
+    <!-- Drop Zone Text -->
+
+            <p id="drop-zone-text">Drop files here or click to browse</p>
+
+    <!-- File Preview -->
+            <div id="file-preview">
+      <!-- File Names -->
+                <ul id="file-names"></ul>
+            </div>
+
+    <!-- File Input -->
+            <input type="file" id="file-input" multiple />
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="{% static 'main/js/file_upload.js' %}"></script>

@@ -8,11 +8,14 @@
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'main/css/layout.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main/css/file_upload.css' %}">
     <script src="https://kit.fontawesome.com/ee07bab358.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="content">
-        <header>
+        <header class="blur">
             <div class="header-container">
                 <div class="logo-section">
                     <img class="logo" src="https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png" alt="">
@@ -42,7 +45,7 @@
             </div>
         </header>
 
-        <div class="main-container">
+        <div class="main-container blur">
             <aside id="sidebar"> {#class="left-menu-bar"#}
                 <div class="sidebar_content sidebar_body" {#class="left-menu-bar-icons"#}>
                     <nav class="side_navlinks">
@@ -179,6 +182,7 @@
                     </div>
                     <button type="submit" class="btn btn-secondary btn-lg">Subbmit</button>
                 </form>
+                <button id="myBtn" class="open-popup">test</button>
 {#                <form action="" method="post" enctype="multipart/form-data">#}
 {#                    {% csrf_token %}#}
 
@@ -201,8 +205,10 @@
             </div>
         </div>
     </div>
+    {% include 'main/file_upload.html' %}
     <script src="{% static 'main/js/sidebar.js' %}"></script>
     <script src="{% static 'main/js/test.js' %}"></script>
+    <script src="{% static 'main/js/popup.js' %}"></script>
 
 </body>
 </html>

@@ -31,9 +31,14 @@ def main_pg(request):
 def model_form_upload(request):
 
     if request.method == 'POST':
-        user_value = request.POST.get("file_type")
-        print(user_value)
+        print(request.FILES)
+
+        for i in request.FILES.getlist('myFile'):
+            print(i)
+        # user_value = request.POST.get("myFile")
+        # print(user_value)
         return redirect('/')
+        # return redirect('/')
         # print(request.POST)
         # form = DocumentForm(request.POST, request.FILES)
         # if form.is_valid():

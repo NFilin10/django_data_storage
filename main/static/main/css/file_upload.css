@@ -1,0 +1,85 @@
+/* Drop Zone Container */
+#drop-zone-container {
+    width: 500px;
+    height: 300px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+.wrapper {
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    display: none;
+    width: 100%;
+    height: 100%;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    max-width: 100%;
+    overflow: auto;
+}
+
+/* Drop Zone */
+#drop-zone {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Drop Zone Text */
+#drop-zone-text {
+    font-size: 18px;
+    text-align: center;
+    color: #ccc;
+}
+
+/* File Preview */
+#file-preview {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* File Names */
+#file-names {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* File Input */
+#file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+/* File Name Card */
+.file-name-card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* File Icon */
+.file-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+

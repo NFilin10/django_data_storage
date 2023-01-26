@@ -12,13 +12,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'main/css/file_upload.css' %}">
     <script src="https://kit.fontawesome.com/ee07bab358.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="content">
         <header class="blur">
             <div class="header-container">
                 <div class="logo-section">
-                    <img class="logo" src="https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png" alt="">
+{#                    <img class="logo" src="https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png" alt="">#}
                     <h3 class="app-name">server</h3>
                 </div>
                 <div class="search-bar">
@@ -183,6 +184,8 @@
                     <button type="submit" class="btn btn-secondary btn-lg">Subbmit</button>
                 </form>
                 <button id="myBtn" class="open-popup">test</button>
+
+
 {#                <form action="" method="post" enctype="multipart/form-data">#}
 {#                    {% csrf_token %}#}
 
@@ -204,6 +207,7 @@
 {#                </form>#}
             </div>
         </div>
+
     </div>
     {% include 'main/file_upload.html' %}
     <script src="{% static 'main/js/sidebar.js' %}"></script>

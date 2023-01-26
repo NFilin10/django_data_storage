@@ -7,7 +7,7 @@
     margin: 20px auto;
 }
 
-.wrapper {
+.file-upload-wrapper {
     transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
     display: none;
     width: 100%;

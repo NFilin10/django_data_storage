@@ -35,23 +35,15 @@ def model_form_upload(request):
 
     if request.method == 'POST':
         print("THIS IS POST", request.POST)
-        #
-        # # print("this is req")
-        # # print(request.FILES)
-        #
-        for i in request.FILES.getlist('document'):
-            print("this is i")
-            print(i)
+
 
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            # print(doc_type_dict['name'])
-            obj = form.save(commit=False)
-            print("valid")
-            # password = request.POST.get("text")
-            # print(password)
-            obj.user = request.user
-            obj.save()
+
+            for f in request.FILES.getlist('document'):
+                instance = Document(file_type=request.POST.get('file_type'), document=f, user=request.user)
+                instance.save()
+
             # x = Document.objects.filter(user=request.user)
             # print(x)
             return redirect('/')

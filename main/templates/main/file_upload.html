@@ -2,25 +2,27 @@
 
 <!-- Drop Zone Container -->
 <div class="file-upload-wrapper" id="file-popup">
-    <form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-        <div class="file-popup" id="drop-zone-container" {# mypopup #}>
-            <span class="close">&times;</span>
-            <div class="popup-content" id="drop-zone">
-                <p id="drop-zone-text">Drop files here or click to browse</p>
-                <div id="file-preview">
-                    <ul id="file-names"></ul>
+    <div class="file-upload-content" id="doc-popup-content">
+        <form class="doc-form" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="file-popup" id="drop-zone-container">
+                <span id="doc-close" class="close">&times;</span>
+                <div class="popup-content" id="drop-zone">
+                    <p id="drop-zone-text">Drop files here or click to browse</p>
+                    <div id="file-preview">
+                        <ul id="file-names"></ul>
+                    </div>
+{#                    <input type="file" id="file-input" multiple />#}
+                    <input name="document" type="file" id="file-input" multiple>
+                    <input name="file_type" type="hidden" id="myField" value="" />
                 </div>
-    {#            <input type="file" id="file-input" multiple />#}
-                <input name="document" class="form-control" type="file" id="file-input id_document" multiple>
-                <input name="file_type" type="hidden" id="myField" value="" />
+
+                <button type="submit">Upload</button>
+
             </div>
 
-            <button type="submit">Upload</button>
-
-        </div>
-
-    </form>
+        </form>
+    </div>
 </div>
 
 

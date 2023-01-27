@@ -1,0 +1,17 @@
+{% load static %}
+
+
+<div class="note-popup-wrapper" id="note-popup">
+    <div class="form-group" id="note-popup-content">
+        <span id="note-close" class="close">&times;</span>
+        <form method="post">
+        {% csrf_token %}
+            <label for="id_heading">Heading:</label>
+            <input type="text" name="heading" class="form-control" maxlength="30" required="" id="id_heading">
+            <label for="id_user_data">Data:</label>
+            <textarea class="form-control" name="user_data" cols="40" rows="10" maxlength="1500" required="" id="id_user_data"></textarea>
+            <input name="file_type" type="hidden" id="myField1" value="" />
+            <button type="submit">Upload</button>
+      </form>
+    </div>
+</div>

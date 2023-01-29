@@ -2,7 +2,12 @@ from django.shortcuts import render, redirect
 from .forms import DocumentForm, NoteForm
 from .models import Document, Note
 from django.contrib.auth.decorators import login_required
-import json
+from random import shuffle
+from django.http import FileResponse
+import os
+from django.http import StreamingHttpResponse
+from wsgiref.util import FileWrapper #django >1.8
+from django.conf import settings
 
 # @login_required()
 def main_pg(request):
@@ -67,4 +72,35 @@ def model_form_upload(request):
     else:
        form = DocumentForm()
 
-    return render(request, 'main/layout.html', {'form':form})
+    return render(request, 'main/layout.html')
+
+
+
+from django.http import HttpResponse
+
+def all_files(request):
+    all_files = Document.objects.all().filter(user_id=request.user)
+
+
+    return render(request, 'main/all_files.html', {"files":all_files, "file_size":all_files})
+
+
+
+
+def all_files1(request, file_id):
+    print(file_id)
+    obj = Document.objects.get(id=file_id)
+    file_path = os.path.join(settings.MEDIA_ROOT, obj.document.name)
+    filename = os.path.basename(file_path)
+    chunk_size = 8192
+    response = StreamingHttpResponse(
+        FileWrapper(open(file_path, 'rb'), chunk_size),
+        content_type="application/octet-stream"
+    )
+    response['Content-Length'] = os.path.getsize(file_path)
+    response['Content-Disposition'] = "attachment; filename=%s" % filename
+    return response
+
+
+
+    # return render(request, 'main/all_files.html', {'resp':response})

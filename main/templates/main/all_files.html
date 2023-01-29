@@ -1,0 +1,33 @@
+{% extends 'main/main_layout.html' %}
+{% load multifor %}
+
+{% load static %}
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th>File</th>
+                <th>Size</th>
+                <th>Added</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in files %}
+{#            {% for_longest file in files; y in y_list %}#}
+            <tr>
+                <td>{{ file.document.name | cut:'documents/' }}</td>
+                <td>{{ file.document.size | filesizeformat}}</td>
+                <td>{{ file.datetime }}</td>
+                <td><a href="{% url 'down' file_id=file.id %}">{{ file.id }}</a></td>
+            <tr>
+            {% endfor %}
+{#                <td>file2</td>#}
+{#                <td>23 GB</td>#}
+{#                <td>12.12.2022</td>#}
+{#                <td>Link</td>#}
+{#            </tr>#}
+        </tbody>
+    </table>
+
+{% endblock %}

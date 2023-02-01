@@ -9,33 +9,11 @@ from django.http import StreamingHttpResponse
 from wsgiref.util import FileWrapper #django >1.8
 from django.conf import settings
 
-# @login_required()
-def main_pg(request):
-    return render(request, 'main/layout.html')
 
-
-# def model_form_upload(request):
-#     if request.method == 'POST':
-#         form = DocumentForm(request.POST, request.FILES)
-#         # test = Document(description="File")
-#         if form.is_valid():
-#             # data = form.cleaned_data
-#             # field = data['document']
-#             # print(field)
-#             form.save()
-#         t = Document.objects.get(id=23)
-#         t.description = 'test file'
-#         t.save()
-#
-#     else:
-#         form = DocumentForm()
-#     return render(request, 'main/layout.html', {
-#         'form': form
-#     })
 @login_required()
 def model_form_upload(request):
+    last_5 = Document.objects.all().filter(user_id=request.user).order_by('-id')[:5]
 
-    form = NoteForm(request.POST, request.FILES)
 
     if request.method == 'POST':
         print("THIS IS POST", request.POST)
@@ -72,7 +50,7 @@ def model_form_upload(request):
     else:
        form = DocumentForm()
 
-    return render(request, 'main/layout.html')
+    return render(request, 'main/layout.html', {"recent":last_5})
 
 
 

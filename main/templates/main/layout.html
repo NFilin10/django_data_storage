@@ -3,12 +3,12 @@
 
 {% block content %}
             <div class="main-section">
-{#                <div class="files-icons">#}
-{#                    <div class="icon-wrapper-main"><i class="fa-solid fa-image fa-lg"><span class="upper">200 files</span></i></div>#}
-{#                    <div class="icon-wrapper-main"><i class="fa-solid fa-folder fa-lg"><span class="upper">200 files</span></i></div>#}
-{#                    <div class="icon-wrapper-main"><i class="fa-solid fa-link fa-lg"><span class="upper">200 files</span></i></div>#}
-{#                    <div class="icon-wrapper-main"><i class="fa-solid fa-note-sticky fa-lg"><span class="upper">200 files</span></i></div>#}
-{#                </div>#}
+                <div class="files-icons">
+                    <div class="icon-wrapper-main"><i class="fa-solid fa-image fa-lg"><span class="upper">200 files</span></i></div>
+                    <div class="icon-wrapper-main"><i class="fa-solid fa-folder fa-lg"><span class="upper">200 files</span></i></div>
+                    <div class="icon-wrapper-main"><i class="fa-solid fa-link fa-lg"><span class="upper">200 files</span></i></div>
+                    <div class="icon-wrapper-main"><i class="fa-solid fa-note-sticky fa-lg"><span class="upper">200 files</span></i></div>
+                </div>
                 <div class="folders">
                     <h3>Folders</h3>
                     <div class="folders-block">
@@ -73,33 +73,19 @@
                                     <th>File</th>
                                     <th>Size</th>
                                     <th>Added</th>
+                                    <th>Download</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for file in recent %}
                                 <tr>
-                                    <td>file1</td>
-                                    <td>23 GB</td>
-                                    <td>12.12.2022</td>
+                                    <td>{{ file.document.name | cut:'documents/' }}</td>
+                                    <td>{{ file.document.size | filesizeformat}}</td>
+                                    <td>{{ file.datetime }}</td>
+                                    <td><a href="{% url 'down' file_id=file.id %}">{{ file.id }}</a></td>
+
                                 <tr>
-                                    <td>file2</td>
-                                    <td>23 GB</td>
-                                    <td>12.12.2022</td>
-                                </tr>
-                                <tr>
-                                    <td>file3</td>
-                                    <td>23 GB</td>
-                                    <td>12.12.2022</td>
-                                </tr>
-                                <tr>
-                                    <td>file4</td>
-                                    <td>23 GB</td>
-                                    <td>12.12.2022</td>
-                                </tr>
-                                <tr>
-                                    <td>file5</td>
-                                    <td>23 GB</td>
-                                    <td>12.12.2022</td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>

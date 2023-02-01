@@ -31,8 +31,8 @@
                     {% if user.is_authenticated %}
                         <img class="profile-pic" src="https://images.unsplash.com/photo-1628563694622-5a76957fd09c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&w=1000&q=80" alt="">
                         <div class="user-info">
-                            <span class="name">Nikita Filin</span>
-                            <span class="email">nikita@gmail</span>
+                            <span class="name">{{ user.first_name }} {{ user.last_name }}</span>
+                            <span class="email">{{ user.email }}</span>
 
                         </div>
                         <div class="sidebar_toggler">
@@ -53,7 +53,7 @@
                 <div class="sidebar_content sidebar_body" {#class="left-menu-bar-icons"#}>
                     <nav class="side_navlinks">
                         <div class="upper-icons">
-                            <div class="icon-wrapper"><i class="fa-solid fa-house fa-lg"></i><span class="icon-heading">Dashboard</span></div>
+                            <a href="{% url 'home' %}"><div class="icon-wrapper"><i class="fa-solid fa-house fa-lg"></i><span class="icon-heading">Dashboard</span></div></a>
                             <a href="{% url 'all' %}"><div class="icon-wrapper"><i class="fa-solid fa-border-none fa-lg"></i><span class="icon-heading">All files</span></div></a>
                             <div class="icon-wrapper"><i class="fa-solid fa-file fa-lg"></i><span class="icon-heading">Recent</span></div>
                             <div class="icon-wrapper"><i class="fa-solid fa-heart fa-lg"></i><span class="icon-heading">Favorites</span></div>

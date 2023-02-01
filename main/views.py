@@ -14,6 +14,14 @@ from django.conf import settings
 def model_form_upload(request):
     last_5 = Document.objects.all().filter(user_id=request.user).order_by('-id')[:5]
 
+    files_count = len(Document.objects.all().filter(user_id=request.user, file_type="Document"))
+    pics_count = len(Document.objects.all().filter(user_id=request.user, file_type="Photo"))
+    links_count = len(Note.objects.all().filter(user_id=request.user, file_type="Link"))
+    notes_count = len(Note.objects.all().filter(user_id=request.user, file_type="Note"))
+
+
+
+
 
     if request.method == 'POST':
         print("THIS IS POST", request.POST)
@@ -50,7 +58,7 @@ def model_form_upload(request):
     else:
        form = DocumentForm()
 
-    return render(request, 'main/layout.html', {"recent":last_5})
+    return render(request, 'main/layout.html', {"recent":last_5, "files": files_count, "photos": pics_count, "links":links_count, "notes":notes_count})
 
 
 

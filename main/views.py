@@ -90,16 +90,19 @@ def all_files(request):
 def all_files1(request, file_id):
     print(file_id)
     obj = Document.objects.get(id=file_id)
-    file_path = os.path.join(settings.MEDIA_ROOT, obj.document.name)
-    filename = os.path.basename(file_path)
-    chunk_size = 8192
-    response = StreamingHttpResponse(
-        FileWrapper(open(file_path, 'rb'), chunk_size),
-        content_type="application/octet-stream"
-    )
-    response['Content-Length'] = os.path.getsize(file_path)
-    response['Content-Disposition'] = "attachment; filename=%s" % filename
-    return response
+    if request.user.id == file_id:
+        file_path = os.path.join(settings.MEDIA_ROOT, obj.document.name)
+        filename = os.path.basename(file_path)
+        chunk_size = 8192
+        response = StreamingHttpResponse(
+            FileWrapper(open(file_path, 'rb'), chunk_size),
+            content_type="application/octet-stream"
+        )
+        response['Content-Length'] = os.path.getsize(file_path)
+        response['Content-Disposition'] = "attachment; filename=%s" % filename
+        return response
+    else:
+        return redirect('/')
 
 
 

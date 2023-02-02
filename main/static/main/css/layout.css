@@ -91,7 +91,7 @@
 }
 
 #sidebar{
-    width: 15%;
+    min-width: 15%;
     height: 789px;
     display: flex;
     flex-direction: column;
@@ -232,34 +232,16 @@
     margin-bottom: 50px;
 
 }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  overflow: hidden;
-}
-th,
-td {
-  padding: 15px;
-  background-color: white;
-  color: black;
 
-}
-th {
-  text-align: left;
-}
-thead {
-  /*background-color: #55608f;*/
-    border-bottom: 1px solid #F6F6F6;
+table{
+    width: 100%;
 }
 
-tbody td {
-  position: relative;
+td{
+    padding: 20px 0 20px 0;
 }
 
-tr{
-    display: flex;
-    justify-content: space-between;
-}
+
 /*tbody td:hover:before {*/
 /*  content: "";*/
 /*  position: absolute;*/

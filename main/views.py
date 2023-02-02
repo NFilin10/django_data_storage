@@ -93,3 +93,25 @@ def all_files1(request, file_id):
 
 
     # return render(request, 'main/all_files.html', {'resp':response})
+
+
+def all_notes(request):
+    notes_obj = Note.objects.all().filter(user_id=request.user)
+    return render(request, 'main/all_notes.html', {"notes":notes_obj})
+
+
+def pictures(request):
+    all_pictures = Document.objects.all().filter(user_id=request.user, file_type="Photo")
+    return render(request, 'main/all_files.html', {"files": all_pictures})
+
+def files(request):
+    all_files = Document.objects.all().filter(user_id=request.user, file_type="Document")
+    return render(request, 'main/all_files.html', {"files": all_files})
+
+def links(request):
+    links_obj = Note.objects.all().filter(user_id=request.user, file_type="Link")
+    return render(request, 'main/all_notes.html', {"notes":links_obj})
+
+def notes(request):
+    note_obj = Note.objects.all().filter(user_id=request.user, file_type="Note")
+    return render(request, 'main/all_notes.html', {"notes":note_obj})

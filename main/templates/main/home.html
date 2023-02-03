@@ -82,7 +82,7 @@
                         <td>{{ file.document.name | cut:'documents/' }}</td>
                         <td>{{ file.document.size | filesizeformat}}</td>
                         <td>{{ file.datetime }}</td>
-                        <td><a href="{% url 'download' file_id=file.id %}">{{ file.id }}</a></td>
+                        <td><a href="{% url 'download' file_id=file.id %}"><i class="fa-solid fa-download"></i></a></td>
 
                     <tr>
                     {% endfor %}
@@ -108,9 +108,7 @@
 
 {% include 'main/file_upload.html' %}
 {% include 'main/note_upload.html' %}
-<script src="{% static 'main/js/sidebar.js' %}"></script>
-<script src="{% static 'main/js/test.js' %}"></script>
-<script src="{% static 'main/js/popup.js' %}"></script>
+<script src="{% static 'main/js/upload_popup.js' %}"></script>
 {% endblock %}
 
 

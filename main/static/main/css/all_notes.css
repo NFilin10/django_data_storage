@@ -29,3 +29,17 @@
     font-size: 28px;
     font-weight: bold;
 }
+
+.fa-xmark{
+    margin-right: 10px;
+    color: black;
+}
+
+.icon-delete{
+    display: flex;
+    justify-content: space-between;
+}
+
+.fa-xmark{
+    cursor: pointer;
+}

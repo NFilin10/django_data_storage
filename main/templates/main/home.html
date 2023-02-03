@@ -104,11 +104,15 @@
     </div>
 </div>
 
-
-
-{% include 'main/file_upload.html' %}
-{% include 'main/note_upload.html' %}
 <script src="{% static 'main/js/upload_popup.js' %}"></script>
+{% endblock %}
+
+{% block file_popup %}
+{% include 'main/file_upload.html' %}
+{% endblock %}
+
+{% block note_popup %}
+{% include 'main/note_upload.html' %}
 {% endblock %}
 
 

@@ -106,3 +106,14 @@ def links(request):
 def notes(request):
     note_obj = Note.objects.all().filter(user_id=request.user, file_type="Note")
     return render(request, 'main/all_notes.html', {"notes":note_obj})
+
+
+def all_notes_delete(request, note_id):
+    note_obj = Note.objects.filter(id=note_id)
+    note_obj.delete()
+    return redirect('all_n')
+
+def notes_delete(request, note_id):
+    note_obj = Note.objects.filter(id=note_id)
+    note_obj.delete()
+    return redirect('notes')

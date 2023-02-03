@@ -19,11 +19,22 @@
                         <td>{{ file.document.size | filesizeformat}}</td>
                         <td>{{ file.datetime }}</td>
 {#                        <td><a href="{% url 'download' file_id=file.id %}"><i class="fa-solid fa-download"></i></a></td>#}
-                        <td>M</td>
+                        <td>
+                            <i class="fa-solid fa-ellipsis-vertical" id="menu-icon-{{ forloop.counter }}"></i>
+                            <div id="dropdown-menu-{{ forloop.counter }}" class="hidden">
+                              <a href="{% url 'download' file_id=file.id %}"><i class="fa-solid fa-download"></i></a>
+                              <a href="#">Delete</a>
+                            </div>
+                        </td>
                     <tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+
+    <script src="{% static 'main/js/three_dots_menu.js' %}"></script>
+
+
+
 
 {% endblock %}

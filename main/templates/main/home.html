@@ -1,0 +1,116 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="main-section">
+    <div class="files-icons">
+        <div class="icon-wrapper-main"><i class="fa-solid fa-image fa-lg"><span class="upper">{{ photos }} photos</span></i></div>
+        <div class="icon-wrapper-main"><i class="fa-solid fa-folder fa-lg"><span class="upper">{{ files }} files</span></i></div>
+        <div class="icon-wrapper-main"><i class="fa-solid fa-link fa-lg"><span class="upper">{{ links }} links</span></i></div>
+        <div class="icon-wrapper-main"><i class="fa-solid fa-note-sticky fa-lg"><span class="upper">{{ notes }} notes</span></i></div>
+    </div>
+    <div class="folders">
+        <h3>Folders</h3>
+        <div class="folders-block">
+            <div class="folder-wrapper">
+                <div class="folder-info">
+                    <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
+                    <h3 class="folder-name">Theme</h3>
+                    <span class="file-amount">File amount</span>
+                </div>
+            </div>
+            <div class="folder-wrapper">
+                <div class="folder-info">
+                    <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
+                    <h3 class="folder-name">Theme</h3>
+                    <span class="file-amount">File amount</span>
+                </div>
+            </div>
+            <div class="folder-wrapper">
+                <div class="folder-info">
+                    <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
+                    <h3 class="folder-name">Theme</h3>
+                    <span class="file-amount">File amount</span>
+                </div>
+            </div>
+            <div class="folder-wrapper">
+                <div class="folder-info">
+                    <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
+                    <h3 class="folder-name">Theme</h3>
+                    <span class="file-amount">File amount</span>
+                </div>
+            </div>
+            <div class="folder-wrapper">
+                <div class="folder-info">
+                    <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
+                    <h3 class="folder-name">Theme</h3>
+                    <span class="file-amount">File amount</span>
+                </div>
+            </div>
+            <div class="folder-wrapper">
+                <div class="folder-info">
+                    <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
+                    <h3 class="folder-name">Theme</h3>
+                    <span class="file-amount">File amount</span>
+                </div>
+            </div>
+            <div class="folder-wrapper">
+                <div class="folder-info">
+                    <i class="fa-solid fa-folder-closed fa-2x folder-icon"></i>
+                    <h3 class="folder-name">Theme</h3>
+                    <span class="file-amount">File amount</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="files-section">
+        <h3>Files</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>Size</th>
+                        <th>Added</th>
+                        <th>Download</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for file in recent %}
+                    <tr>
+                        <td>{{ file.document.name | cut:'documents/' }}</td>
+                        <td>{{ file.document.size | filesizeformat}}</td>
+                        <td>{{ file.datetime }}</td>
+                        <td><a href="{% url 'download' file_id=file.id %}">{{ file.id }}</a></td>
+
+                    <tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="storage-section">
+    <div class="form-floating">
+        <select onchange="a()" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option id="none" selected="selected" disabled value="">None</option>
+            <option  id="photo" value="Photo">Photo</option>
+            <option id="document" value="Document">Document</option>
+            <option id="link" value="Link" class="open-popup" data-popup="link">Link</option>
+            <option id="note" value="Note">Note</option>
+        </select>
+        <label for="floatingSelect">Select file type</label>
+    </div>
+</div>
+
+
+
+{% include 'main/file_upload.html' %}
+{% include 'main/note_upload.html' %}
+<script src="{% static 'main/js/sidebar.js' %}"></script>
+<script src="{% static 'main/js/test.js' %}"></script>
+<script src="{% static 'main/js/popup.js' %}"></script>
+{% endblock %}
+
+

@@ -1,6 +1,6 @@
-{% extends 'main/main_layout.html' %}
-
+{% extends 'main/layout.html' %}
 {% load static %}
+
 {% block content %}
     <div class="table-container">
         <table>
@@ -14,19 +14,13 @@
             </thead>
             <tbody>
                 {% for file in files %}
-    {#            {% for_longest file in files; y in y_list %}#}
                     <tr>
                         <td>{{ file.document.name | cut:'documents/' }}</td>
                         <td>{{ file.document.size | filesizeformat}}</td>
                         <td>{{ file.datetime }}</td>
-                        <td><a href="{% url 'down' file_id=file.id %}">{{ file.id }}</a></td>
+                        <td><a href="{% url 'download' file_id=file.id %}">{{ file.id }}</a></td>
                     <tr>
                 {% endfor %}
-    {#                <td>file2</td>#}
-    {#                <td>23 GB</td>#}
-    {#                <td>12.12.2022</td>#}
-    {#                <td>Link</td>#}
-    {#            </tr>#}
             </tbody>
         </table>
     </div>

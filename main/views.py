@@ -11,16 +11,13 @@ from django.conf import settings
 
 
 @login_required()
-def model_form_upload(request):
+def main_page(request):
     last_5 = Document.objects.all().filter(user_id=request.user).order_by('-id')[:5]
 
     files_count = len(Document.objects.all().filter(user_id=request.user, file_type="Document"))
     pics_count = len(Document.objects.all().filter(user_id=request.user, file_type="Photo"))
     links_count = len(Note.objects.all().filter(user_id=request.user, file_type="Link"))
     notes_count = len(Note.objects.all().filter(user_id=request.user, file_type="Note"))
-
-
-
 
 
     if request.method == 'POST':
@@ -37,8 +34,6 @@ def model_form_upload(request):
                     instance = Document(file_type=request.POST.get('file_type'), document=f, user=request.user)
                     instance.save()
 
-                # x = Document.objects.filter(user=request.user)
-                # print(x)
                 return redirect('/')
             else:
                 print(form.errors)
@@ -58,25 +53,21 @@ def model_form_upload(request):
     else:
        form = DocumentForm()
 
-    return render(request, 'main/layout.html', {"recent":last_5, "files": files_count, "photos": pics_count, "links":links_count, "notes":notes_count})
+    return render(request, 'main/home.html', {"recent":last_5, "files": files_count, "photos": pics_count, "links":links_count, "notes":notes_count})
 
-
-
-from django.http import HttpResponse
 
 def all_files(request):
     all_files = Document.objects.all().filter(user_id=request.user)
 
 
-    return render(request, 'main/all_files.html', {"files":all_files, "file_size":all_files})
+    return render(request, 'main/all_files.html', {"files":all_files})
 
 
 
 
-def all_files1(request, file_id):
-    print(file_id)
-    obj = Document.objects.get(id=file_id)
-    if request.user.id == file_id:
+def file_download(request, file_id):
+    obj = Document.objects.filter(id=file_id, user_id=request.user.id).first()
+    if obj:
         file_path = os.path.join(settings.MEDIA_ROOT, obj.document.name)
         filename = os.path.basename(file_path)
         chunk_size = 8192
@@ -88,11 +79,8 @@ def all_files1(request, file_id):
         response['Content-Disposition'] = "attachment; filename=%s" % filename
         return response
     else:
+        print(request.user.id, file_id)
         return redirect('/')
-
-
-
-    # return render(request, 'main/all_files.html', {'resp':response})
 
 
 def all_notes(request):
@@ -104,13 +92,16 @@ def pictures(request):
     all_pictures = Document.objects.all().filter(user_id=request.user, file_type="Photo")
     return render(request, 'main/all_files.html', {"files": all_pictures})
 
+
 def files(request):
     all_files = Document.objects.all().filter(user_id=request.user, file_type="Document")
     return render(request, 'main/all_files.html', {"files": all_files})
 
+
 def links(request):
     links_obj = Note.objects.all().filter(user_id=request.user, file_type="Link")
     return render(request, 'main/all_notes.html', {"notes":links_obj})
+
 
 def notes(request):
     note_obj = Note.objects.all().filter(user_id=request.user, file_type="Note")

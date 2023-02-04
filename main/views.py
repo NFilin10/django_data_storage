@@ -8,6 +8,7 @@ import os
 from django.http import StreamingHttpResponse
 from wsgiref.util import FileWrapper #django >1.8
 from django.conf import settings
+from django.shortcuts import HttpResponseRedirect
 
 
 @login_required()
@@ -108,12 +109,14 @@ def notes(request):
     return render(request, 'main/all_notes.html', {"notes":note_obj})
 
 
-def all_notes_delete(request, note_id):
-    note_obj = Note.objects.filter(id=note_id)
-    note_obj.delete()
-    return redirect('all_n')
-
 def notes_delete(request, note_id):
     note_obj = Note.objects.filter(id=note_id)
     note_obj.delete()
-    return redirect('notes')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+
+def file_delete(request, file_id):
+    note_obj = Document.objects.filter(id=file_id)
+    note_obj.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+

@@ -12,7 +12,6 @@ urlpatterns = [
     path('links', login_required(views.links), name='links'),
     path('notes', login_required(views.notes), name='notes'),
     path('all_files/download/<file_id>', login_required(views.file_download), name='download'),
-    path('all_notes/delete/<note_id>', login_required(views.all_notes_delete), name='delete'),
-    path('notes/delete/<note_id>', login_required(views.notes_delete), name='delete')
-
+    path('notes/delete/<note_id>', login_required(views.notes_delete), name='note_delete'),
+    path('files/delete/<file_id>', login_required(views.file_delete), name='file_delete'),
 ]
